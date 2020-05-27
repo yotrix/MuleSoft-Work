@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:api-gateway="http://www.mulesoft.org/schema/mule/api-gateway"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/api-gateway http://www.mulesoft.org/schema/mule/api-gateway/current/mule-api-gateway.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<api-gateway:autodiscovery apiId="16162972" doc:name="API Autodiscovery" doc:id="b920845c-d797-4edc-b792-0edb15197b3a" flowRef="helloworldFlow" />
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="c042432b-ee14-420f-964b-e57c4412765b" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="helloworldFlow" doc:id="9f0d0b55-1c81-4ad8-ac9c-fd881025835c" >
+		<http:listener doc:name="Listener" doc:id="eb159ad0-262a-43e5-bccb-c39a51d1b65b" config-ref="HTTP_Listener_config" path="/helloworld"/>
+		<logger level="INFO" doc:name="Logger" doc:id="f63fceea-0af9-402c-b3a9-a270fb23482c" message='#["Gopi-Hello World"]'/>
+	</flow>
+</mule>
